@@ -23,11 +23,19 @@ namespace CadastroUsuario.infrastructure.data.repositories.implementations
             return Result.Ok(usuario);
         }
 
-        public async Task<Result<List<Usuario>>> GetAll()
+        public async Task<Result<List<Usuario>>> GetAll(bool ativo)
         {
-            var servicos = await _context.Usuario.ToListAsync();
-            return Result.Ok(servicos);
+            var query = _context.Usuario.AsQueryable();
+
+            if (ativo)
+            {
+                query = query.Where(u => u.Status == true);
+            }
+
+            var usuarios = await query.ToListAsync();
+            return Result.Ok(usuarios);
         }
+
 
         public async Task<Result<Usuario>> GetById(int idUsuario)
         {
@@ -37,6 +45,20 @@ namespace CadastroUsuario.infrastructure.data.repositories.implementations
                 return Result.Fail($"Não existe usuário de id: {idUsuario} ");
             }
             return Result.Ok(usuario);
+        }
+
+        public async Task<Result<Usuario>> InativaUsuario(int idUsuario)
+        {
+            var usuario = await GetById(idUsuario);
+            if (usuario.IsFailed)
+            {
+                return Result.Fail($"Não existe usuário de id:{idUsuario}");
+            }
+            var usuarioValor = usuario.Value;
+            usuarioValor.Status = false;
+            _context.Usuario.Update(usuarioValor);
+            await _context.SaveChangesAsync();
+            return Result.Ok(usuarioValor);
         }
 
         public async Task<Result<Usuario>> UpdateAsync(UpdateUsuarioDto updateUsuarioDto, int IdUsuario)
@@ -50,7 +72,6 @@ namespace CadastroUsuario.infrastructure.data.repositories.implementations
             usuarioValor.Cidade = updateUsuarioDto.Cidade;
             usuarioValor.Email = updateUsuarioDto.Email;
             usuarioValor.Nome = updateUsuarioDto.Nome;
-            usuarioValor.Status = updateUsuarioDto.Status;
             _context.Usuario.Update(usuarioValor);
             await _context.SaveChangesAsync();
             return Result.Ok(usuarioValor);

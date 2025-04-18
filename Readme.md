@@ -2,18 +2,15 @@ Cadastro de Usuários - API
 <div> <img src="https://img.shields.io/badge/Status-Em_Andamento-yellow">
 <img src="https://img.shields.io/github/languages/top/EversonSoucek/ControleUsuarios-api-aspnet">
 <img src="https://img.shields.io/github/languages/code-size/EversonSoucek/ControleUsuarios-api-aspnet"> </div>
+
 Este é um projeto de API de Cadastro de Usuários desenvolvida com ASP.NET Core 9. A API permite a criação, atualização, listagem e consulta de usuários. O projeto segue os princípios de Clean Architecture e utiliza FluentResults para tratar os retornos de forma consistente.
 
 :hammer: Funcionalidades do projeto
-Listar todos os usuários
-
-Buscar usuário por ID
-
-Cadastrar novo usuário
-
-Atualizar dados de um usuário
-
-Validação de dados de entrada
+- Listar todos os usuários
+- Buscar usuário por ID
+- Cadastrar novo usuário
+- Atualizar dados de um usuário
+- Validação de dados de entrada
 
 :wrench: Técnicas e tecnologias utilizadas
 ⚙️ ASP.NET Core 9
@@ -47,7 +44,6 @@ Agora sua API estará rodando na URL: https://localhost:5001/
 
 📌 Endpoints
 
-Método	Rota	Descrição
 GET	/usuario	Lista todos os usuários
 GET	/usuario/{IdUsuario}	Retorna usuário por ID
 POST	/usuario	Cria um novo usuário

@@ -8,7 +8,8 @@ namespace CadastroUsuario.infrastructure.data.repositories.interfaces
     {
         Task<Result<Usuario>> CreateAsync(Usuario usuario);
         Task<Result<Usuario>> GetById(int idUsuario);
-        Task<Result<List<Usuario>>> GetAll();
+        Task<Result<List<Usuario>>> GetAll(bool ativo);
         Task<Result<Usuario>> UpdateAsync(UpdateUsuarioDto updateUsuarioDto, int IdUsuario);
+        Task<Result<Usuario>> InativaUsuario(int idUsuario);
     }
 }

@@ -24,6 +24,7 @@ namespace CadastroUsuario.application.mappers
         {
             return new UsuarioDto
             {
+                IdUsuario = usuario.IdUsuario,
                 Cidade = usuario.Cidade,
                 Nome = usuario.Nome,
                 Email = usuario.Email

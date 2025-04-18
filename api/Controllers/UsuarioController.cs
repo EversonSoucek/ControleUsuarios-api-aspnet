@@ -29,9 +29,9 @@ namespace CadastroUsuario.api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] bool ativo = true)
         {
-            var usuariosResult = await _usuarioRepo.GetAll();
+            var usuariosResult = await _usuarioRepo.GetAll(ativo);
 
             if (usuariosResult.IsFailed)
             {
@@ -41,6 +41,7 @@ namespace CadastroUsuario.api.Controllers
             var usuariosDto = usuariosResult.Value.Select(u => u.ToUsuarioDto()).ToList();
             return Ok(usuariosDto);
         }
+
 
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateUsuarioDto createUsuarioDto)
@@ -78,6 +79,17 @@ namespace CadastroUsuario.api.Controllers
 
             var usuarioDto = result.Value.ToUsuarioDto();
             return Ok(usuarioDto);
+        }
+
+        [HttpPatch("{IdUsuario:int}")]
+        public async Task<IActionResult> InativaUsuario([FromRoute] int IdUsuario)
+        {
+            var result = await _usuarioRepo.InativaUsuario(IdUsuario);
+            if (result.IsFailed)
+            {
+                return NotFound(result.Errors);
+            }
+            return Ok(result.Value);
         }
     }
 }
