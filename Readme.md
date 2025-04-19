@@ -1,5 +1,5 @@
 Cadastro de Usuários - API
-<div> <img src="https://img.shields.io/badge/Status-Em_Andamento-yellow">
+<div> <img src="https://img.shields.io/badge/Concluido-green">
 <img src="https://img.shields.io/github/languages/top/EversonSoucek/ControleUsuarios-api-aspnet">
 <img src="https://img.shields.io/github/languages/code-size/EversonSoucek/ControleUsuarios-api-aspnet"> </div>
 
@@ -35,17 +35,20 @@ git clone https://github.com/seu-usuario/cadastro-usuario-api.git
 Crie um arquivo .env na raiz do projeto e adicione sua conexão com o banco de dados MySQL:
 DEFAULT_CONNECTION_STRING=server=localhost;database=CadastroUsuario;user=root;password=SuaSenha;
 
-3. Execute as migrations para criar o banco de dados:
+3.execute dotnet restore
+
+4. Execute as migrations para criar o banco de dados:
 dotnet ef database update
 
-4. Execute o projeto:
+5. Execute o projeto:
 dotnet watch run
-Agora sua API estará rodando na URL: https://localhost:5001/
+Agora sua API estará rodando na URL: (http://localhost:5213/)
 
 📌 Endpoints
 
 GET	/usuario	Lista todos os usuários
 GET	/usuario/{IdUsuario}	Retorna usuário por ID
+PATCH /usuario/{IdUsuario} altere status do usuário
 POST	/usuario	Cria um novo usuário
 PUT	/usuario/{IdUsuario}	Atualiza os dados de um usuário
 
