@@ -31,16 +31,16 @@ Para rodar o projeto localmente, siga os passos abaixo:
 1. Clone o repositório:
 git clone https://github.com/seu-usuario/cadastro-usuario-api.git
 
-2. Configure as variáveis de ambiente:
+3. Configure as variáveis de ambiente:
 Crie um arquivo .env na raiz do projeto e adicione sua conexão com o banco de dados MySQL:
 DEFAULT_CONNECTION_STRING=server=localhost;database=CadastroUsuario;user=root;password=SuaSenha;
 
-3.execute dotnet restore
+4. Execute dotnet restore
 
-4. Execute as migrations para criar o banco de dados:
+5. Execute as migrations para criar o banco de dados:
 dotnet ef database update
 
-5. Execute o projeto:
+6. Execute o projeto:
 dotnet watch run
 Agora sua API estará rodando na URL: (http://localhost:5213/)
 
